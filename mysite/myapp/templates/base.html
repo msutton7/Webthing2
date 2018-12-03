@@ -1,0 +1,63 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static "css/foundation.css" %}">
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+  </head>
+<body style="background-color:lightblue">
+  <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">FANCY-TITLE</li>
+          <li><a href="/home/">Home</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          {% if user.is_authenticated %}
+            <ul class="dropdown menu" data-dropdown-menu>     
+              <li>
+                <a>Games</a>
+                  <ul class="menu vertical">
+                    <li><a href="/Game1/">Game 1</a></li>
+                    <li><a href="/Game2/">Game 2</a></li>
+                    <li><a href="/Game3/">Game 3</a></li>
+                  </ul>
+              </li>
+          
+              <li>
+                <a>Scores</a>
+                  <ul class="menu vertical">
+                    <li><a href="/Global/">Global</a></li>
+                    <li><a href="/Score1/">Game 1</a></li>
+                    <li><a href="/Score2/">Game 2</a></li>
+                    <li><a href="/Score3/">Game 3</a></li>
+                  </ul>
+              </li>
+            </ul>
+          
+          <!-- <li><a href="/home/">{{ user.username }}</a></li> -->
+          <!-- <li><a href="/suggestion/">Add Suggestion</a></li> -->
+          <li><a href="/logout/">Logout</a></li>
+          {% else %}
+           <!-- <li><a href="/register/">Register</a></li> -->
+          <li><a href="/login/">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+{% block content %}
+{% endblock %}
+<script src="{% static "js/vendor/jquery.js" %}"></script>
+<script src="{% static "js/vendor/what-input.js" %}"></script>
+<script src="{% static "js/vendor/foundation.js" %}"></script>
+<script src="{% static "js/app.js" %}"></script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>
